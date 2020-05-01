@@ -1,0 +1,493 @@
+@import "Assets/scss/element-variables.scss";
+
+html,
+body,
+div#app {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.m-0 {
+  margin: 0px !important;
+}
+
+.m-5 {
+  margin: 5px !important;
+}
+
+.m-10 {
+  margin: 10px !important;
+}
+
+.m-15 {
+  margin: 15px !important;
+}
+
+.m-20 {
+  margin: 20px !important;
+}
+
+.m-25 {
+  margin: 25px !important;
+}
+.m-30 {
+  margin: 30px !important;
+}
+
+.m-l-0 {
+  margin-left: 0px !important;
+}
+
+.m-r-0 {
+  margin-right: 0px !important;
+}
+
+.m-t-0 {
+  margin-top: 0px !important;
+}
+
+.m-b-0 {
+  margin-bottom: 0px !important;
+}
+
+.m-l-5 {
+  margin-left: 5px !important;
+}
+
+.m-r-5 {
+  margin-right: 5px !important;
+}
+
+.m-t-5 {
+  margin-top: 5px !important;
+}
+
+.m-b-5 {
+  margin-bottom: 5px !important;
+}
+
+.m-l-10 {
+  margin-left: 10px !important;
+}
+
+.m-r-10 {
+  margin-right: 10px !important;
+}
+
+.m-t-10 {
+  margin-top: 10px !important;
+}
+
+.m-b-10 {
+  margin-bottom: 10px !important;
+}
+
+.m-l-15 {
+  margin-left: 15px !important;
+}
+
+.m-r-15 {
+  margin-right: 15px !important;
+}
+
+.m-t-15 {
+  margin-top: 15px !important;
+}
+
+.m-b-15 {
+  margin-bottom: 15px !important;
+}
+
+.m-l-20 {
+  margin-left: 20px !important;
+}
+
+.m-r-20 {
+  margin-right: 20px !important;
+}
+
+.m-t-20 {
+  margin-top: 20px !important;
+}
+
+.m-b-20 {
+  margin-bottom: 20px !important;
+}
+
+.m-l-25 {
+  margin-left: 25px !important;
+}
+
+.m-r-25 {
+  margin-right: 25px !important;
+}
+
+.m-t-25 {
+  margin-top: 25px !important;
+}
+
+.m-b-25 {
+  margin-bottom: 25px !important;
+}
+
+//padding
+.p-0 {
+  padding: 0px !important;
+}
+
+.p-5 {
+  padding: 5px !important;
+}
+
+.p-10 {
+  padding: 10px !important;
+}
+
+.p-15 {
+  padding: 15px !important;
+}
+
+.p-20 {
+  padding: 20px !important;
+}
+
+.p-25 {
+  padding: 25px !important;
+}
+
+.p-l-0 {
+  padding-left: 0px !important;
+}
+
+.p-r-0 {
+  padding-right: 0px !important;
+}
+
+.p-t-0 {
+  padding-top: 0px !important;
+}
+
+.p-b-0 {
+  padding-bottom: 0px !important;
+}
+
+.p-l-5 {
+  padding-left: 5px !important;
+}
+
+.p-r-5 {
+  padding-right: 5px !important;
+}
+
+.p-t-5 {
+  padding-top: 5px !important;
+}
+
+.p-b-5 {
+  padding-bottom: 5px !important;
+}
+
+.p-l-10 {
+  padding-left: 10px !important;
+}
+
+.p-r-10 {
+  padding-right: 10px !important;
+}
+
+.p-t-10 {
+  padding-top: 10px !important;
+}
+
+.p-b-10 {
+  padding-bottom: 10px !important;
+}
+
+.p-l-15 {
+  padding-left: 15px !important;
+}
+
+.p-r-15 {
+  padding-right: 15px !important;
+}
+
+.p-t-15 {
+  padding-top: 15px !important;
+}
+
+.p-b-14 {
+  padding-bottom: 14px !important;
+}
+
+.p-b-15 {
+  padding-bottom: 15px !important;
+}
+
+.p-l-20 {
+  padding-left: 20px !important;
+}
+
+.p-r-20 {
+  padding-right: 20px !important;
+}
+
+.p-t-20 {
+  padding-top: 20px !important;
+}
+
+.p-b-20 {
+  padding-bottom: 20px !important;
+}
+
+.p-l-25 {
+  padding-left: 25px !important;
+}
+
+.p-r-25 {
+  padding-right: 25px !important;
+}
+
+.p-t-25 {
+  padding-top: 25px !important;
+}
+
+.p-b-25 {
+  padding-bottom: 25px !important;
+}
+
+.p-l-50 {
+  padding-left: 50px !important;
+}
+
+.p-r-50 {
+  padding-right: 50px !important;
+}
+
+.p-t-50 {
+  padding-top: 50px !important;
+}
+
+.p-b-50 {
+  padding-bottom: 50px !important;
+}
+
+.font-10 {
+  font-size: 10px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-22 {
+  font-size: 22px;
+}
+
+.font-w {
+  font-weight: 600 !important;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input {
+  outline: none;
+}
+
+.clearfix {
+  overflow: auto;
+  clear: both;
+}
+
+.hide,
+.hidden {
+  display: none !important;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.color-gy {
+  color: #009a61;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.line-h {
+  line-height: 25px !important;
+}
+
+.font-count-height {
+  /deep/ .el-input__inner {
+    padding-right: 60px !important;
+  }
+
+  /deep/ .el-input__suffix {
+    line-height: 26px;
+  }
+}
+
+.draft-view-mgt {
+  background: #f3f3f3;
+  padding: 10px;
+  margin: 0;
+  min-height: calc(100vh - 20px);
+}
+
+.tab-color {
+  /deep/ .el-tabs__item {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    border-bottom: none !important;
+
+    &:hover {
+      color: rgb(48, 49, 51) !important;
+      background-color: #f2f2f2 !important;
+    }
+  }
+
+  /deep/ .is-active {
+    color: rgb(48, 49, 51) !important;
+    background-color: #f2f2f2 !important;
+  }
+
+  /deep/ .el-tabs__content {
+    padding: 0 10px !important;
+    overflow: hidden !important;
+  }
+}
+
+.m-b--8 {
+  margin-bottom: -8px !important;
+}
+
+// 行内块
+.v-line {
+  display: inline-block;
+}
+
+// 输入框统一
+.input_line_inner {
+  .el-input {
+    line-height: 25px !important;
+
+    /deep/ .el-input__inner {
+      padding-right: 60px !important;
+    }
+  }
+}
+
+// table 的 滚动条统一
+.table_scroll_column {
+  /deep/ .el-table__body-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  // 滚动条的滑块
+  /deep/ .el-table__body-wrapper::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 3px;
+  }
+
+  // 滚动条轨道
+  /deep/ .el-table__body-wrapper::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+// 红色删除按钮
+.del-btn {
+  color: #ff4409;
+  font-style: normal;
+}
+
+// 黄色警告按钮
+.war-btn {
+  color: #ebb563;
+  font-style: normal;
+}
+
+.p-40 {
+  padding: 40px !important;
+}
+
+.m-l-30 {
+  margin-left: 30px !important;
+}
+
+.border-b-1 {
+  border-bottom: 1px solid #ddd;
+}
+
+.el-picker-panel {
+  right: 30px !important;
+}
+
+.main-scroll {
+  height: calc(100vh - 200px);
+
+  /deep/ .is-horizontal {
+    display: none !important;
+  }
+
+  /deep/ .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
+}
+.el-time-panel {
+  left: -30px !important;
+}

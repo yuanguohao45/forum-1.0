@@ -1,0 +1,71 @@
+.el-checkbox,
+.el-checkbox + .el-checkbox {
+  margin-left: 0;
+  margin-right: 15px;
+}
+
+.zcy-card {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+
+  h1 {
+    color: #2c2c2c;
+    border-bottom: 1px solid #e2e5e8;
+    margin: 5px 0;
+    padding-bottom: 10px;
+
+    & > span {
+      display: inline-block;
+      padding: 3px 10px;
+      background-color: #4b74ff;
+      color: #fff;
+      margin: 0 10px 0 5px;
+      border-radius: 5px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.normal-card {
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  /deep/ .el-card__body {
+    padding: 15px 15px 10px 15px;
+  }
+
+  &.header-panel {
+    /deep/ .el-tabs__active-bar {
+      height: 2px;
+    }
+
+    /deep/ .el-tabs__nav-wrap::after {
+      height: 2px;
+    }
+
+    /deep/ .el-tabs__nav {
+      .el-tabs__item {
+        font-size: 22px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .border-bottom-line {
+    border-bottom: 1px solid #e5e5e5;
+  }
+}
+
+.form-block {
+  // border: 1px solid #e2e5e8;
+  border: 1px solid #c8cdd6;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+  }
+}

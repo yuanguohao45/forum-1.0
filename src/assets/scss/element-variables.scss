@@ -1,0 +1,5 @@
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+/* 按钮颜色修改*/
+$--color-primary: #4b74ff;
+@import "~element-ui/packages/theme-chalk/src/index";
