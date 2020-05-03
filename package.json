@@ -12,8 +12,12 @@
   "dependencies": {
     "axios": "^0.19.2",
     "element-ui": "^2.13.1",
+    "lib-flexible": "^0.3.2",
     "moment": "^2.24.0",
+    "px2rem-loader": "^0.1.9",
+    "swiper": "^5.3.8",
     "vue": "^2.5.2",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.3.0"
   },

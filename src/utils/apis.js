@@ -16,12 +16,24 @@ let baseURL = process.env.baseURL + ":" + process.env.serverPort;
 
 let apis = {
   /**
-   *  单模块api
+   *  抽奖模块
    */
-  api1: {},
+  luckDraw: {
+    luckStart: ""
+  },
   /**
-   *  单模块api
+   *  短信发送模块api
    */
-  api2: {}
+  sms: {
+    postSms: "", // 群发
+    postSmsSingle: "" // 单发
+  },
+  /**
+   *  预约审核模块api
+   */
+  preReview: {
+    getTableData: "", // 获取预约列表数据
+    pass: "" // 审核通过
+  }
 };
 export { apis };

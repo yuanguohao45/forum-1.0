@@ -51,8 +51,17 @@
         专家介绍
       </div>
       <div class="expert">
-        <img src="@/assets/image/u56_normal.png" alt="">
-        <img src="@/assets/image/u56_normal.png" alt="">
+        <div class="swiper-container">
+          <swiper ref="mySwiper" :options="swiperOptions">
+            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
+            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
+            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
+            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
+            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
+          </swiper>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
       </div>
     </div>
     <!-- 线上展区 -->
@@ -77,10 +86,57 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import "swiper/css/swiper.css";
+
 export default {
   name: "Home",
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
+  },
   data() {
-    return {};
+    return {
+      swiperOptions: {
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        speed: 1000,
+        slidesPerView: 3,
+        spaceBetween: 1,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+          hideOnClick: false, //点击slide时显示/隐藏按钮
+          disabledClass: "my-button-disabled", //前进后退按钮不可用时的类名。
+          hiddenClass: "my-button-hidden" //按钮隐藏时的Class
+        }
+      }
+    };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    }
+  },
+  mounted() {
+    this.swiper.slideTo(1, 1000, false);
+    //鼠标移出隐藏按钮，移入显示按钮
+    this.swiper.el.onmouseover = () => {
+      this.swiper.navigation.$nextEl.removeClass("hide");
+      this.swiper.navigation.$prevEl.removeClass("hide");
+    };
+    this.swiper.el.onmouseout = () => {
+      this.swiper.navigation.$nextEl.addClass("hide");
+      this.swiper.navigation.$prevEl.addClass("hide");
+    };
   },
   methods: {
     /**
@@ -155,7 +211,7 @@ export default {
       .subject {
         height: 141px;
         width: 100vw;
-        background: url("../../assets/image/u28_normal.png") no-repeat 100% 100%;
+        background: url("../../assets/image/u28_normal.png") 100% 100%;
         position: relative;
         .topic {
           position: absolute;
@@ -173,11 +229,11 @@ export default {
     }
     .expert {
       width: 100vw;
-      display: flex;
-      justify-content: space-between;
-      img {
-        width: 49.8%;
-      }
+      // display: flex;
+      // justify-content: space-between;
+      // img {
+      //   width: 49.8%;
+      // }
     }
     .online {
       img {
@@ -192,5 +248,25 @@ export default {
       }
     }
   }
+}
+</style>
+
+<style>
+.swiper-container .hide {
+  opacity: 0;
+}
+.swiper-container {
+  /* position: relative; */
+}
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: 37.8px;
+  outline: 0;
+  transition: opacity 0.5s;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 20px;
 }
 </style>

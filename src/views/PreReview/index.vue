@@ -19,8 +19,8 @@
             </el-option>
           </el-select>
         </el-col>
-        <el-col :span="6" align="right">
-          <el-button type="primary" size="mini" @click="searchData">查询</el-button>
+        <el-col :span="6">
+          <el-button type="primary" size="mini" @click="handleCurrentChange(1)">查询</el-button>
         </el-col>
       </el-row>
     </el-card>
@@ -46,7 +46,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <div class="m-20" align="right">
+      <div class="m-20 m-b-10" align="right">
         <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="queryParams.currentPage" :page-sizes="[10, 20, 30, 40,50]" :page-size="queryParams.pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total">
         </el-pagination>
       </div>
@@ -55,6 +55,9 @@
 </template>
 
 <script>
+import qs from "qs";
+import { apis } from "@/utils/apis";
+import request from "@/utils/request";
 import { headerStyle } from "@/utils/public";
 
 export default {
@@ -92,6 +95,7 @@ export default {
       ],
       tableKey: 0, // 表格key
       tableLoading: false,
+      total: 0,
 
       queryParams: {
         name: "",
@@ -99,15 +103,39 @@ export default {
         status: "",
         currentPage: 1,
         pageSize: 10
+      },
+
+      statusOptions: [
+        { label: "未审核", value: "0" },
+        { label: "已审核", value: "1" }
+      ],
+
+      userInfo: {
+        content:
+          "【第四届电力大数据高峰论坛】尊敬的XX，您已成功预约由中国电力大数据创新联盟、中国电机工程学会电力信息化专业委员会、华北电力大学联合主办的第四届电力大数据高峰论坛直播！邀请您关注“大数据中心”微信公众号，5月21日进入直播观看，还有幸运大奖等你拿。"
       }
     };
   },
-  created() {},
+  created() {
+    this.getTableData();
+  },
   methods: {
     /**
      *  表格数据
      */
-    getTableData() {},
+    getTableData() {
+      request
+        .get(apis.preReview.getTableData, { params: this.queryParams })
+        .then(res => {
+          if (res.data.code == 200) {
+            this.tableData = res.data.data;
+            this.total = res.data.count;
+            return;
+          }
+          this.$message.error(res.data.message);
+        })
+        .catch(err => {});
+    },
     /**
      *  状态检索
      */
@@ -119,7 +147,30 @@ export default {
      *  审核通过
      */
     handlePass(row) {
-      console.log(111, row);
+      this.userInfo = Object.assign({}, this.userInfo, row);
+      request
+        .post(apis.preReview.pass, row)
+        .then(res => {
+          if (res.data.code == 200) {
+            this.$message.success("审核通过");
+            this.sendMessage();
+            return;
+          }
+          this.$message.error(res.data.message);
+        })
+        .catch(err => {});
+    },
+    sendMessage() {
+      request
+        .post(apis.sms.postSmsSingle, qs.stringify(this.userInfo))
+        .then(res => {
+          if (res.data.code == 200) {
+            this.$message.success("发送成功");
+            return;
+          }
+          this.$message.error(res.data.message);
+        })
+        .catch(err => {});
     },
     /**
      *  分页
@@ -136,3 +187,17 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.draft-view-mgt {
+  /deep/ .el-card__body {
+    padding-bottom: 15px !important;
+  }
+  .main-panel {
+    height: calc(100vh - 160px);
+    /deep/ .el-card__body {
+      padding: 20px;
+    }
+  }
+}
+</style>

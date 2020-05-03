@@ -26,35 +26,11 @@
                 <td>电话</td>
                 <td>公司</td>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>王力宏</td>
-                <td>150*****401</td>
-                <td>华北电力大学</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>姓名</td>
-                <td>150*****401</td>
-                <td>华北电力大学</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>王力宏</td>
-                <td>150*****401</td>
-                <td>华北电力大学</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>王力宏</td>
-                <td>150*****401</td>
-                <td>华北电力大学</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>王力2宏</td>
-                <td>150*****401</td>
-                <td>华北电力大学</td>
+              <tr v-for="(item,index) in tableData" :key="item.id">
+                <td>{{index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.company}}</td>
               </tr>
             </table>
           </div>
@@ -74,11 +50,41 @@
 </template>
 
 <script>
+import qs from "qs";
+import { apis } from "@/utils/apis";
+import request from "@/utils/request";
+
 export default {
   name: "Home",
   data() {
     return {
-      tableData: [],
+      tableData: [
+        {
+          id: "1",
+          name: "水电费",
+          phone: 12313213123,
+          company: "所说的第三方"
+        },
+        {
+          id: "2",
+          name: "水电费",
+          phone: 12313213123,
+          company: "所说的第三方"
+        },
+        {
+          id: "3",
+          name: "水电费",
+          phone: 12313213123,
+          company: "所说的第三方"
+        },
+        {
+          id: "4",
+          name: "水电费",
+          phone: 12313213123,
+          company: "所说的第三方"
+        },
+        { id: "5", name: "水电费", phone: 12313213123, company: "所说的第三方" }
+      ],
       showBtn: true,
       showCountDown: false,
       showTable: false,
@@ -87,9 +93,10 @@ export default {
     };
   },
   methods: {
-    handleLuckStart() {
+    async handleLuckStart() {
       this.showBtn = false;
       this.showCountDown = true;
+
       this.timer = setInterval(() => {
         if (this.limitTime > 0) {
           this.limitTime--;
@@ -98,8 +105,21 @@ export default {
           clearInterval(this.timer);
           this.showCountDown = false;
           this.showTable = true;
+          this.getTableData();
         }
       }, 1000);
+    },
+    getTableData() {
+      request
+        .post(apis.luckDraw.luckStart, json)
+        .then(res => {
+          if (res.data.code == 200) {
+            this.tableData = res.data.data;
+            return;
+          }
+          this.$message.error(res.data.message);
+        })
+        .catch(err => {});
     }
   }
 };
@@ -160,7 +180,7 @@ export default {
         line-height: 35px;
       }
       .guys {
-        height: 100px;
+        height: 175px;
         img {
           width: 100vw;
           height: 100%;

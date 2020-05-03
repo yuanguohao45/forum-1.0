@@ -24,6 +24,16 @@ export default new Router({
       path: "/PreReview",
       name: "PreReview",
       component: () => import("@/views/PreReview")
+    },
+    {
+      path: "/SMS",
+      name: "SMS",
+      component: () => import("@/views/SMS")
+    },
+    {
+      path: "/Carowcel",
+      name: "Carowcel",
+      component: () => import("@/views/Carowcel")
     }
   ]
 });
