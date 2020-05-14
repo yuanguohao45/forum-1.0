@@ -93,7 +93,7 @@ export default {
     };
   },
   methods: {
-    async handleLuckStart() {
+    handleLuckStart() {
       this.showBtn = false;
       this.showCountDown = true;
 
@@ -110,6 +110,7 @@ export default {
       }, 1000);
     },
     getTableData() {
+      let json = {};
       request
         .post(apis.luckDraw.luckStart, json)
         .then(res => {

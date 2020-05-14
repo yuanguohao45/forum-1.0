@@ -9,7 +9,9 @@ import "babel-polyfill";
 import store from "./store";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import "lib-flexible/flexible.js";
+// import "lib-flexible/flexible.js";
+import remConfig from "./utils/rem";
+remConfig();
 
 Vue.use(ElementUI);
 Vue.prototype.$store = store;

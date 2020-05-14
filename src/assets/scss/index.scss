@@ -1,6 +1,11 @@
 @import "Assets/scss/element-variables.scss";
 
 html,
+body {
+  font-size: 0.32rem;
+}
+
+html,
 body,
 div#app {
   padding: 0;

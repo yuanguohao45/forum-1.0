@@ -22,14 +22,21 @@
     <div class="desc">
       <div class="title border-b-1">高峰直播</div>
       <div class="date">
-        <img src="@/assets/image/u49_normal.png" alt="">
+        <div class="date-img" v-for="(item,index) in dateOptions" :key="item.id" :class="clickIndex==index?'choose-bgc':''" @click="chooseDate(item,index)">
+          <p class="month">
+            {{item.date.slice(0,2)}}
+          </p>
+          <p class="day">
+            {{item.date.slice(2,)}}
+          </p>
+        </div>
       </div>
       <div class="agenda">
         <div class="title border-b-1">上午议程</div>
         <div class="subject">
           <div class="topic">
-            <p>主题演讲：电力大数据</p>
-            <p>5月21日 9：00-13：00</p>
+            <p>{{chooseItem.amTopic}}</p>
+            <p>{{chooseItem.amTime}}</p>
             <el-button size="mini" plain @click="handleViewLive">观看直播</el-button>
           </div>
         </div>
@@ -38,8 +45,8 @@
         <div class="title border-b-1">下午议程</div>
         <div class="subject">
           <div class="topic">
-            <p>主题演讲：大数据应用</p>
-            <p>5月21日 14：00-16：00</p>
+            <p>{{chooseItem.bmTopic}}</p>
+            <p>{{chooseItem.bmTime}}</p>
             <el-button size="mini" plain @click="handleViewLive">观看直播</el-button>
           </div>
         </div>
@@ -53,11 +60,9 @@
       <div class="expert">
         <div class="swiper-container">
           <swiper ref="mySwiper" :options="swiperOptions">
-            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
-            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
-            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
-            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
-            <swiper-slide><img style="width:100%;" src="@/assets/image/u56_normal.png" alt=""></swiper-slide>
+            <swiper-slide v-for="item in imgOptions" :key="item.id">
+              <img style="width:100%;" :src="item.url" alt="">
+            </swiper-slide>
           </swiper>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
@@ -118,7 +123,34 @@ export default {
           disabledClass: "my-button-disabled", //前进后退按钮不可用时的类名。
           hiddenClass: "my-button-hidden" //按钮隐藏时的Class
         }
-      }
+      },
+      imgOptions: [
+        { id: "1", url: require("@/assets/image/u56_normal.png") },
+        { id: "2", url: require("@/assets/image/u56_normal.png") },
+        { id: "3", url: require("@/assets/image/u56_normal.png") },
+        { id: "4", url: require("@/assets/image/u56_normal.png") },
+        { id: "5", url: require("@/assets/image/u56_normal.png") }
+      ],
+      dateOptions: [
+        {
+          id: "1",
+          date: "5月21日",
+          amTopic: "主题演讲：电力大数据",
+          amTime: "5月21日 9：00-13：00",
+          bmTopic: "主题演讲：大数据应用",
+          bmTime: "5月21日 14：00-16：00"
+        },
+        {
+          id: "2",
+          date: "5月22日",
+          amTopic: "主题演讲：电力大数据",
+          amTime: "5月22日 9：00-13：00",
+          bmTopic: "主题演讲：大数据应用",
+          bmTime: "5月22日 14：00-16：00"
+        }
+      ],
+      clickIndex: 0,
+      chooseItem: {}
     };
   },
   computed: {
@@ -126,17 +158,20 @@ export default {
       return this.$refs.mySwiper.$swiper;
     }
   },
+  created() {
+    this.chooseItem = this.dateOptions[0];
+  },
   mounted() {
     this.swiper.slideTo(1, 1000, false);
     //鼠标移出隐藏按钮，移入显示按钮
-    this.swiper.el.onmouseover = () => {
-      this.swiper.navigation.$nextEl.removeClass("hide");
-      this.swiper.navigation.$prevEl.removeClass("hide");
-    };
-    this.swiper.el.onmouseout = () => {
-      this.swiper.navigation.$nextEl.addClass("hide");
-      this.swiper.navigation.$prevEl.addClass("hide");
-    };
+    // this.swiper.el.onmouseover = () => {
+    //   this.swiper.navigation.$nextEl.removeClass("hide");
+    //   this.swiper.navigation.$prevEl.removeClass("hide");
+    // };
+    // this.swiper.el.onmouseout = () => {
+    //   this.swiper.navigation.$nextEl.addClass("hide");
+    //   this.swiper.navigation.$prevEl.addClass("hide");
+    // };
   },
   methods: {
     /**
@@ -150,7 +185,14 @@ export default {
     /**
      *  观看直播
      */
-    handleViewLive() {}
+    handleViewLive() {},
+    /**
+     *  选择日期
+     */
+    chooseDate(row, index) {
+      this.clickIndex = index;
+      this.chooseItem = row;
+    }
   }
 };
 </script>
@@ -195,9 +237,34 @@ export default {
       font-size: 16px;
     }
     .date {
-      img {
-        width: 100%;
-        height: 58px;
+      height: 58px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background: url("../../assets/image/u28_normal.png") 100% 100%;
+      .date-img {
+        margin-top: 4px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        color: #fff;
+        &:active {
+          background-color: #3e88ff;
+        }
+        p {
+          margin: 0;
+          padding: 0;
+        }
+        .month {
+          margin-top: 2px;
+        }
+      }
+      .choose-bgc {
+        background-color: #3994fd;
+        box-shadow: inset 2px 2px 5px #1c74d3;
       }
     }
     .agenda {
@@ -229,11 +296,21 @@ export default {
     }
     .expert {
       width: 100vw;
-      // display: flex;
-      // justify-content: space-between;
-      // img {
-      //   width: 49.8%;
-      // }
+      .swiper-container {
+        .swiper-button-next,
+        .swiper-button-prev {
+          position: absolute;
+          top: 50%;
+          outline: 0;
+          transition: opacity 0.5s;
+          &::after {
+            font-size: 20px;
+          }
+        }
+        .hide {
+          opacity: 0;
+        }
+      }
     }
     .online {
       img {
@@ -248,25 +325,5 @@ export default {
       }
     }
   }
-}
-</style>
-
-<style>
-.swiper-container .hide {
-  opacity: 0;
-}
-.swiper-container {
-  /* position: relative; */
-}
-.swiper-button-next,
-.swiper-button-prev {
-  position: absolute;
-  top: 37.8px;
-  outline: 0;
-  transition: opacity 0.5s;
-}
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  font-size: 20px;
 }
 </style>
